@@ -1,19 +1,19 @@
 <template>
   <div id="nav">
-    <top-header></top-header> 
+    <top-header></top-header>
     <router-link to="/about">About</router-link> |
     <router-link to="/login">Login</router-link> |
     <router-link to="/register">Register</router-link> |
     <router-link to="/content">Content</router-link>
+    <router-view />
   </div>
-  <router-view/>
 </template>
 
 <script>
-  import TopHeader from './components/Top-Header'
-  export default{
-    components: {'top-header': TopHeader}  
-  }
+import TopHeader from "./components/Top-Header";
+export default {
+  components: { "top-header": TopHeader },
+};
 </script>
 <style lang="scss">
 #app {

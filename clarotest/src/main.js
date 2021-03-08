@@ -3,8 +3,17 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 //import axios from 'axios'
+import PrimeVue from 'primevue/config';
 import firebase from 'firebase/app'
 
+import "primevue/resources/themes/saga-blue/theme.css"       //theme
+import "primevue/resources/primevue.min.css"                 //core css
+import "primeicons/primeicons.css"                           //icons
+
+import Button from 'primevue/button';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import Dialog from 'primevue/dialog';
   // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyBKlHr43HCSu0-6vOf4cyo5tJRAcWwaFgQ",
@@ -16,13 +25,23 @@ import firebase from 'firebase/app'
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-
   let app
 
   firebase.auth().onAuthStateChanged(user => {
       console.log(user)
       if(!app){
-          app = createApp(App).use(store).use(router).mount('#app')
+          app = createApp(App)
+          app.use(store)
+          app.use(router)
+          app.use(PrimeVue)
+
+          app.component("Button", Button)
+          app.component("DataTable", DataTable)
+          app.component("Column", Column)
+          app.component("Dialog", Dialog)
+
+          app.mount('#app')
+          
       }
   })
 
