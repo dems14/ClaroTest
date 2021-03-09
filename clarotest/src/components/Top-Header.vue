@@ -16,12 +16,6 @@ import "firebase/auth";
         created(){
             firebase.auth().onAuthStateChanged(user => {
                 this.loggedIn = !! user
-                /*if(user){
-                    this.loggedIn = true
-                }
-                else{
-                    this.loggedIn = false
-                }*/
             })
         },
         methods: {
